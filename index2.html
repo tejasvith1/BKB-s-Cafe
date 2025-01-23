@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BKB's Cafe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #ff4d4d;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    header img {
+      width: 100px;
+      height: auto;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .category {
+      margin-bottom: 40px;
+    }
+
+    .category h2 {
+      color: #ff4d4d;
+      text-transform: uppercase;
+      border-bottom: 2px solid #ff4d4d;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .item-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .item-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .item-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .item-card h3 {
+      margin: 15px 0 5px;
+      color: #333;
+    }
+
+    .item-card p {
+      color: #666;
+      margin: 0 0 10px;
+    }
+
+    .item-desc {
+      font-size: 0.9em;
+      color: #999;
+      margin: 0 0 15px;
+    }
+
+    .buy-now {
+      background-color: #ff4d4d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .buy-now:hover {
+      background-color: #cc3c3c;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #ff4d4d;
+      color: white;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="BKB's Cafe Logo">
+    <h1>BKB's Cafe</h1>
+    <p>Discover deliciousness near you!</p>
+  </header>
+
+  <div class="container">
+    <!-- Snacks Category -->
+    <div class="category">
+      <h2>Snacks</h2>
+      <div class="items">
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1587303150325-9a02d48a47e6" alt="Vadapav">
+          <h3>Vadapav</h3>
+          <p>?30</p>
+          <p class="item-desc">Classic Indian burger stuffed with spicy potato patty.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1587037561242-4005e30076e3" alt="Manchurian">
+          <h3>Manchurian</h3>
+          <p>?120</p>
+          <p class="item-desc">Fried vegetable balls cooked in a spicy sauce.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1588866016403-22f663c3f6c2" alt="Samosa">
+          <h3>Samosa</h3>
+          <p>?20</p>
+          <p class="item-desc">A crispy, fried snack filled with spicy potatoes and peas.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1612392061788-15b780e83925" alt="Fried Rice">
+          <h3>Fried Rice</h3>
+          <p>?80</p>
+          <p class="item-desc">Stir-fried rice mixed with vegetables and spices.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1572448862529-0192a3f51b49" alt="Noodles">
+          <h3>Noodles</h3>
+          <p>?70</p>
+          <p class="item-desc">Soft and tasty noodles cooked with vegetables and soy sauce.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1617093741733-4b43d16d6cf6" alt="Pav Bhaji">
+          <h3>Pav Bhaji</h3>
+          <p>?100</p>
+          <p class="item-desc">A popular Mumbai dish of mashed vegetables with buttered buns.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1628843591092-9937d8f416f1" alt="Frankie">
+          <h3>Frankie</h3>
+          <p>?90</p>
+          <p class="item-desc">A delicious wrap filled with vegetables or chicken.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90" alt="Burger">
+          <h3>Burger</h3>
+          <p>?60</p>
+          <p class="item-desc">A soft bun with a juicy patty and fresh veggies.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beverages Category -->
+    <div class="category">
+      <h2>Beverages</h2>
+      <div class="items">
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" alt="Tea">
+          <h3>Tea</h3>
+          <p>?10</p>
+          <p class="item-desc">A refreshing cup of traditional Indian chai.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+        <div class="item-card">
+          <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e" alt="Coffee">
+          <h3>Coffee</h3>
+          <p>?20</p>
+          <p class="item-desc">A hot cup of freshly brewed coffee.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSruKbz2kcNG3tlm4X-TkUbfd7k2u60Z62m-k8KWUxy0G8TA/viewform?usp=header" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 BKB's Cafe | All Rights Reserved</p>
+  </footer>
+</body>
+</html>
