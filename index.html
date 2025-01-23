@@ -6,131 +6,188 @@
   <title>BKB's Cafe</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
     }
 
     header {
-      background-color: #ff4d4d;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      position: relative;
+        background: linear-gradient(rgba(255, 77, 77, 0.8), rgba(255, 77, 77, 0.8)), url('logo.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+        position: relative;
+    }
+
+    header::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Optional dark overlay for better text visibility */
+        z-index: 1;
     }
 
     header img {
-      width: 100px;
-      height: auto;
-      position: absolute;
-      top: 10px;
-      left: 10px;
+        width: 100px;
+        height: auto;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 2;
+    }
+
+    header h1,
+    header p,
+    header a {
+        position: relative;
+        z-index: 2;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.5em;
+        margin: 0;
+        font-size: 2.5em;
     }
 
     header p {
-      margin: 5px 0 0;
-      font-size: 1.2em;
+        margin: 10px 0 20px;
+        font-size: 1.2em;
+    }
+
+    header a {
+        color: white;
+        text-decoration: none;
+        font-size: 1em;
+        font-weight: bold;
+        margin: 0 10px;
+        padding: 8px 15px;
+        border: 2px solid white;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header a:hover {
+        background-color: white;
+        color: #ff4d4d;
     }
 
     .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 20px;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
     }
 
     .category {
-      margin-bottom: 40px;
+        margin-bottom: 40px;
     }
 
     .category h2 {
-      color: #ff4d4d;
-      text-transform: uppercase;
-      border-bottom: 2px solid #ff4d4d;
-      display: inline-block;
-      margin-bottom: 20px;
+        color: #ff4d4d;
+        text-transform: uppercase;
+        border-bottom: 2px solid #ff4d4d;
+        display: inline-block;
+        margin-bottom: 20px;
     }
 
     .items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
     }
 
     .item-card {
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      width: 250px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 250px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
     }
 
     .item-card:hover {
-      transform: translateY(-5px);
+        transform: translateY(-5px);
     }
 
     .item-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-bottom: 1px solid #ddd;
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-bottom: 1px solid #ddd;
     }
 
     .item-card h3 {
-      margin: 15px 0 5px;
-      color: #333;
+        margin: 15px 0 5px;
+        color: #333;
     }
 
     .item-card p {
-      color: #666;
-      margin: 0 0 10px;
+        color: #666;
+        margin: 0 0 10px;
     }
 
     .item-desc {
-      font-size: 0.9em;
-      color: #999;
-      margin: 0 0 15px;
+        font-size: 0.9em;
+        color: #999;
+        margin: 0 0 15px;
     }
 
     .buy-now {
-      background-color: #ff4d4d;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-bottom: 15px;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
+        background-color: #ff4d4d;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 15px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
     }
 
     .buy-now:hover {
-      background-color: #cc3c3c;
+        background-color: #cc3c3c;
     }
 
     footer {
-      text-align: center;
-      background-color: #ff4d4d;
-      color: white;
-      padding: 10px;
-      margin-top: 20px;
+        text-align: center;
+        background-color: #ff4d4d;
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
     }
 
     .contact {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 1.1em;
+        margin-top: 40px;
+        text-align: center;
+        font-size: 1.1em;
     }
-  </style>
+
+    @media (max-width: 768px) {
+        header h1 {
+            font-size: 2em;
+        }
+
+        header p {
+            font-size: 1em;
+        }
+
+        .item-card {
+            width: 100%;
+        }
+
+        header a {
+            font-size: 0.9em;
+            padding: 7px 12px;
+        }
+    }
+</style>
 </head>
 <body>
   <header>
@@ -140,7 +197,7 @@
 <nav>
 <a href="index.html">Home</a>
       <a href="know_more.html">Know More</a>
-      <a href="Contact.html">Contact Us</a>
+      <a href="contact.html">Contact Us</a>
   </header>
 
   <div class="container">
@@ -211,6 +268,8 @@
   <footer>
     <p>Contact us: +91 9702453788 / +91 8329987567</p>
     <p>In case of any query, reach out to us at our contact numbers!</p>
+<a href="terms.html" target="_blank" style="color: white; text-decoration: none;">Terms & Conditions</a> | 
+    <a href="privacy.html" target="_blank" style="color: white; text-decoration: none;">Privacy Policy</a>
     <p>2025 BKB's Cafe | All Rights Reserved</p>
   </footer>
 </body>
