@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BKB's Cafe - Order Now</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+
+    header {
+        background: linear-gradient(rgba(255, 77, 77, 0.8), rgba(255, 77, 77, 0.8)), url('logo.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+        position: relative;
+    }
+
+    header::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+
+    header img {
+        width: 100px;
+        height: auto;
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        z-index: 2;
+    }
+
+    header h1,
+    header p {
+        position: relative;
+        z-index: 2;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+
+    header p {
+        margin: 10px 0 20px;
+        font-size: 1.2em;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+
+    .form-section {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #ff4d4d;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background-color: #cc3c3c;
+    }
+
+    .qr-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .qr-container img {
+        max-width: 200px;
+        margin-bottom: 10px;
+    }
+
+    footer {
+        text-align: center;
+        background-color: #ff4d4d;
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    footer a {
+        color: white;
+        text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="BKB's Cafe Logo">
+    <h1>BKB's Cafe</h1>
+    <p>Discover deliciousness near you!</p>
+  </header>
+
+  <div class="container">
+    <div class="form-section">
+      <h2>Place Your Order</h2>
+      <form id="order-form">
+        <!-- Name and Class -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="class">Class:</label>
+        <input type="text" id="class" name="class" required>
+
+        <!-- Food Items -->
+        <label for="food-items">Select Your Items:</label>
+        <select id="food-items" name="food-items" required>
+            <option value="">Select...</option>
+            <option value="Vadapav">Vadapav</option>
+            <option value="Manchurian">Manchurian</option>
+            <option value="Samosa">Samosa</option>
+            <option value="Fried Rice">Fried Rice</option>
+            <option value="Noodles">Noodles</option>
+            <option value="Pav Bhaji">Pav Bhaji</option>
+            <option value="Frankie">Frankie</option>
+            <option value="Burger">Burger</option>
+        </select>
+
+        <!-- Quantity -->
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+
+        <!-- Delivery Location -->
+        <label for="landmark">Nearby Landmark:</label>
+        <select id="landmark" name="landmark" required>
+            <option value="">Select Landmark</option>
+            <option value="Main Building">Main Building</option>
+            <option value="NR Building">NR Building</option>
+            <option value="IT Building">IT Building</option>
+        </select>
+
+        <!-- Special Instructions -->
+        <label for="special-instructions">Special Instructions (Optional):</label>
+        <textarea id="special-instructions" name="special-instructions" rows="4"></textarea>
+
+        <!-- Payment Option -->
+        <label>Payment Method:</label>
+        <input type="radio" id="cod" name="payment_method" value="COD" required> Cash on Delivery (COD)
+        <input type="radio" id="upi" name="payment_method" value="UPI" required> UPI
+
+        <!-- UPI Section -->
+        <div id="upi-details" style="display:none;">
+            <div class="qr-container">
+                <p>Scan the QR Code or use UPI ID: <strong>tejasvithalani6-1@okhdfcbank</strong></p>
+                <img src="UPIQR.jpg" alt="UPI QR Code">
+                <p class="note">Please share the payment snapshot on WhatsApp to confirm the order (only for UPI).</p>
+            </div>
+        </div>
+
+        <button type="button" onclick="confirmOrder()">Confirm Order</button>
+      </form>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Contact us: +91 9702453788 / +91 8329987567</p>
+    <p>In case of any query, reach out to us at our contact numbers!</p>
+  </footer>
+
+  <script>
+    // Show UPI details if UPI is selected
+    document.querySelectorAll('input[name="payment_method"]').forEach((element) => {
+        element.addEventListener('change', function () {
+            const upiDetails = document.getElementById('upi-details');
+            if (document.getElementById('upi').checked) {
+                upiDetails.style.display = 'block';
+            } else {
+                upiDetails.style.display = 'none';
+            }
+        });
+    });
+
+    // Confirm order and redirect to WhatsApp with details
+    function confirmOrder() {
+        const form = document.getElementById('order-form');
+        const name = form.querySelector('#name').value;
+        const className = form.querySelector('#class').value;
+        const foodItems = form.querySelector('#food-items').value;
+        const quantity = form.querySelector('#quantity').value;
+        const landmark = form.querySelector('#landmark').value;
+        const specialInstructions = form.querySelector('#special-instructions').value;
+        const paymentMethod = form.querySelector('input[name="payment_method"]:checked').value;
+
+        let message = `Order Details:\n`;
+        message += `Name: ${name}\n`;
+        message += `Class: ${className}\n`;
+        message += `Food Items: ${foodItems}\n`;
+        message += `Quantity: ${quantity}\n`;
+        message += `Nearby Landmark: ${landmark}\n`;
+        message += `Payment Method: ${paymentMethod}\n`;
+        if (specialInstructions) {
+            message += `Special Instructions: ${specialInstructions}\n`;
+        }
+
+        const whatsappLink = `https://wa.me/918329987567?text=${encodeURIComponent(message)}`;
+        window.location.href = whatsappLink;
+    }
+  </script>
+</body>
+</html>
