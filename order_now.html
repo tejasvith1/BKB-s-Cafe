@@ -122,15 +122,59 @@
         text-decoration: none;
     }
 
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.menu-item {
+    text-align: center;
+    width: 120px; /* Adjust item box width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.menu-item img {
+    width: 80px;  /* Adjust image size */
+    height: 80px; /* Keep it uniform */
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.menu-item input.quantity {
+    margin-top: 10px;
+    width: 50px; /* Adjust width of quantity input box */
+}
+.note {
+    background-color: #ffeb3b; /* Yellow background */
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
   </style>
 </head>
 <body>
   <header>
     <img src="logo.jpg" alt="BKB's Cafe Logo">
     <h1>BKB's Cafe</h1>
-    <p>Discover deliciousness near you!</p>
+    <p>Crafting Memories Over Meals!</p>
   </header>
-
+<!-- Special Note -->
+<div class="note">
+    <p><strong>Special Note:</strong> Minimum order value should be ₹50 to get free delivery.</p>
+</div>
   <div class="container">
     <div class="form-section">
       <h2>Place Your Order</h2>
@@ -142,26 +186,61 @@
         <label for="class">Class:</label>
         <input type="text" id="class" name="class" required>
 
-        <!-- Food Items -->
-        <label for="food-items">Select Your Items:</label>
-        <select id="food-items" name="food-items" required>
-            <option value="">Select...</option>
-            <option value="Vadapav">Vadapav</option>
-            <option value="Manchurian">Manchurian</option>
-            <option value="Samosa">Samosa</option>
-            <option value="Fried Rice">Fried Rice</option>
-            <option value="Noodles">Noodles</option>
-            <option value="Pav Bhaji">Pav Bhaji</option>
-            <option value="Frankie">Frankie</option>
-            <option value="Burger">Burger</option>
-        </select>
+        <h3>Select Your Items:</h3>
+<div class="menu">
+    <div class="menu-item">
+        <img src="vadapav.jpg" alt="Vadapav">
+        <p>Vadapav</p>
+        <input type="number" min="0" value="0" class="quantity" data-item="vadapav">
+    </div>
+<div class="menu">
+    <div class="menu-item">
+        <img src="samosa.jpg" alt="Samosa">
+        <p>Samosa</p>
+        <input type="number" min="0" value="0" class="quantity" data-item="samosa">
+    </div>
+<div class="menu">
+    <div class="menu-item">
+        <img src="creamonion.jpg" alt="Cream & Onion Chips">
+        <p>Cream & Onion Chips</p>
+        <input type="number" min="0" value="0" class="quantity" data-item="creamonion">
+    </div>
+    <div class="menu-item">
+        <img src="masala.jpg" alt="Masti Masala Chips">
+        <p>Masti Masala Chips</p>
+        <input type="number" min="0" value="0" class="quantity" data-item="masala">
+    </div>
+    <div class="menu-item">
+        <img src="tomato.jpg" alt="Tingling Tomato Chips">
+        <p>Tingling Tomato Chips</p>
+        <input type="number" min="0" value="0" class="quantity" data-item="tomato">
+    </div>
+    <div class="menu-item">
+        <img src="salted.jpg" alt="Classic Salted Chips">
+        <p>Classic Salted Chips</p>
+        <input type="number" min="0" value="0" class="quantity" data-item="salted">
+    </div>
+</div>
+<div class="menu-item">
+        <img src="soyastick.jpg" alt="Soya Stick Chips">
+        <p>Soya Stick Chips</p>
+        <input type="number" min="0" value="0" class="quantity" data-item="soyastick">
+    </div>
+</div>
+<div class="menu-item">
+        <img src="snakker.jpg" alt="Snakker Chocolate">
+        <p>Snakker Chocolate</p>
+        <input type="number" min="0" value="0" class="quantity" data-item="snakker">
+    </div>
+</div>
+
 
         <!-- Quantity -->
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" required>
+        <!--label for="quantity">Quantity:</label-->
+        <!--input type="number" id="quantity" name="quantity" min="1" required-->
 
         <!-- Delivery Location -->
-        <label for="landmark">Nearby Landmark:</label>
+        <label for="landmark">Delivery Location:</label>
         <select id="landmark" name="landmark" required>
             <option value="">Select Landmark</option>
             <option value="Main Building">Main Building</option>
@@ -186,6 +265,7 @@
                 <p class="note">Please share the payment snapshot on WhatsApp to confirm the order (only for UPI).</p>
             </div>
         </div>
+<h3>Total Price: ₹<span id="total-price">0</span></h3>
 
         <button type="button" onclick="confirmOrder()">Confirm Order</button>
       </form>
@@ -194,11 +274,49 @@
   </div>
 
   <footer>
-    <p>Contact us: +91 9702453788 / +91 8329987567</p>
-    <p>In case of any query, reach out to us at our contact numbers!</p>
-  </footer>
+    <p>Reach out to BKB's Cafe, contact us on 
+        <a href="tel:+918329987567">+91 83299 87567</a>
+    </p>
+    <p>For any other help & support, contact on 
+        <a href="tel:+918976129650">+91 8976129650</a> / 
+        <a href="tel:+919702453788">+91 9702453788</a>
+    </p>
+</footer>
+
 
   <script>
+// Define prices for each item
+const itemPrices = {
+    "vadapav": 15,      // Updated Vadapav price to 15
+    "samosa": 15,       // Updated Samosa price to 15
+    "creamonion": 5,    // Updated Cream & Onion Chips price to 5
+    "masala": 5,        // Updated Masti Masala Chips price to 5
+    "tomato": 5,        // Updated Tingling Tomato Chips price to 5
+    "salted": 5,        // Updated Classic Salted Chips price to 5
+    "soyastick": 5,     // Updated Soya Stick Chips price to 5
+    "snakker": 5        // Updated Snakker Chocolate price to 5
+};
+
+// Function to calculate total price
+function updateTotalPrice() {
+    let totalPrice = 0;
+    document.querySelectorAll('.quantity').forEach(input => {
+        const itemName = input.getAttribute('data-item');
+        const quantity = parseInt(input.value);
+        if (quantity > 0) {
+            totalPrice += itemPrices[itemName] * quantity;
+        }
+    });
+
+    // Update total price in the HTML
+    document.getElementById('total-price').textContent = totalPrice;
+}
+
+// Attach event listeners to all quantity inputs
+document.querySelectorAll('.quantity').forEach(input => {
+    input.addEventListener('input', updateTotalPrice);
+});
+
     // Show UPI details if UPI is selected
     document.querySelectorAll('input[name="payment_method"]').forEach((element) => {
         element.addEventListener('change', function () {
@@ -216,8 +334,20 @@
         const form = document.getElementById('order-form');
         const name = form.querySelector('#name').value;
         const className = form.querySelector('#class').value;
-        const foodItems = form.querySelector('#food-items').value;
-        const quantity = form.querySelector('#quantity').value;
+        let orderItems = [];
+document.querySelectorAll('.quantity').forEach(input => {
+    const itemName = input.getAttribute('data-item');
+    const quantity = input.value;
+    if (quantity > 0) {
+        orderItems.push(`${itemName} x ${quantity}`);
+    }
+});
+
+if (orderItems.length === 0) {
+    alert('Please select at least one item.');
+    return;
+}
+message += `Items Ordered:\n${orderItems.join('\n')}\n`;
         const landmark = form.querySelector('#landmark').value;
         const specialInstructions = form.querySelector('#special-instructions').value;
         const paymentMethod = form.querySelector('input[name="payment_method"]:checked').value;
