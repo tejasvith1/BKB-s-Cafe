@@ -331,42 +331,48 @@ document.querySelectorAll('.quantity').forEach(input => {
     });
 
     // Confirm order and redirect to WhatsApp with details
-    function confirmOrder() {
-        const form = document.getElementById('order-form');
-        const name = form.querySelector('#name').value;
-        const className = form.querySelector('#class').value;
-        let orderItems = [];
-document.querySelectorAll('.quantity').forEach(input => {
-    const itemName = input.getAttribute('data-item');
-    const quantity = input.value;
-    if (quantity > 0) {
-        orderItems.push(`${itemName} x ${quantity}`);
+   function confirmOrder() {
+    const form = document.getElementById('order-form');
+    const name = form.querySelector('#name').value.trim();
+    const className = form.querySelector('#class').value.trim();
+    const landmark = form.querySelector('#landmark').value;
+    const specialInstructions = form.querySelector('#special-instructions').value.trim();
+    const paymentMethod = form.querySelector('input[name="payment_method"]:checked')?.value;
+
+    if (!name || !className || !landmark || !paymentMethod) {
+        alert('Please fill all required fields.');
+        return;
     }
-});
 
-if (orderItems.length === 0) {
-    alert('Please select at least one item.');
-    return;
-}
-message += `Items Ordered:\n${orderItems.join('\n')}\n`;
-        const landmark = form.querySelector('#landmark').value;
-        const specialInstructions = form.querySelector('#special-instructions').value;
-        const paymentMethod = form.querySelector('input[name="payment_method"]:checked').value;
-
-        let message = `Order Details:\n`;
-        message += `Name: ${name}\n`;
-        message += `Class: ${className}\n`;
-        message += `Food Items: ${foodItems}\n`;
-        message += `Quantity: ${quantity}\n`;
-        message += `Nearby Landmark: ${landmark}\n`;
-        message += `Payment Method: ${paymentMethod}\n`;
-        if (specialInstructions) {
-            message += `Special Instructions: ${specialInstructions}\n`;
+    let orderItems = [];
+    document.querySelectorAll('.quantity').forEach(input => {
+        const itemName = input.getAttribute('data-item');
+        const quantity = parseInt(input.value);
+        if (quantity > 0) {
+            orderItems.push(`${itemName} x ${quantity}`);
         }
+    });
 
-        const whatsappLink = `https://wa.me/918329987567?text=${encodeURIComponent(message)}`;
-        window.location.href = whatsappLink;
+    if (orderItems.length === 0) {
+        alert('Please select at least one item.');
+        return;
     }
+
+    let message = `*Order Details:*\n`;
+    message += `*Name:* ${name}\n`;
+    message += `*Class:* ${className}\n`;
+    message += `*Items Ordered:*\n${orderItems.join('\n')}\n`;
+    message += `*Delivery Location:* ${landmark}\n`;
+    message += `*Payment Method:* ${paymentMethod}\n`;
+
+    if (specialInstructions) {
+        message += `*Special Instructions:* ${specialInstructions}\n`;
+    }
+
+    const whatsappLink = `https://wa.me/918329987567?text=${encodeURIComponent(message)}`;
+    window.location.href = whatsappLink;
+}
+
   </script>
 </body>
 </html>
